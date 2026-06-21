@@ -63,3 +63,8 @@ variable "desired_count" {
   type    = number
   default = 1
 }
+
+variable "github_token_secret_arn" {
+  type        = string
+  description = "ARN of the Secrets Manager secret holding the GitHub PAT"
+}

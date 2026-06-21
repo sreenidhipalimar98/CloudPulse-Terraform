@@ -98,6 +98,10 @@ resource "aws_ecs_task_definition" "app" {
         {
           name      = "DATABASE_CREDENTIALS"
           valueFrom = var.secrets_manager_arn
+        },
+        {
+          name      = "GITHUB_TOKEN"
+          valueFrom = var.github_token_secret_arn
         }
       ]
       logConfiguration = {

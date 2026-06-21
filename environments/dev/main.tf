@@ -104,4 +104,5 @@ module "ecs" {
   secrets_manager_arn      = module.rds.secrets_manager_arn
   alb_security_group_id    = aws_security_group.alb.id
   ecs_security_group_id    = aws_security_group.ecs_tasks.id
+  github_token_secret_arn  = "arn:aws:secretsmanager:ap-south-1:995547019839:secret:cloudpulse-dev-github-token-ZeWXMQ"
 }

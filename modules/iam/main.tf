@@ -63,7 +63,7 @@ resource "aws_iam_role_policy" "ecs_execution_secrets" {
     Statement = [{
       Effect   = "Allow"
       Action   = ["secretsmanager:GetSecretValue"]
-      Resource = var.secrets_manager_arn
+      Resource = [var.secrets_manager_arn, "arn:aws:secretsmanager:ap-south-1:995547019839:secret:cloudpulse-dev-github-token-ZeWXMQ"]
     }]
   })
 }
@@ -107,9 +107,14 @@ resource "aws_iam_role_policy" "ecs_task_readonly_monitoring" {
           "ecs:ListClusters",
           "ecs:ListServices",
           "rds:DescribeDBInstances",
+          "rds:DescribeEvents",
           "cloudwatch:GetMetricData",
           "cloudwatch:GetMetricStatistics",
-          "cloudwatch:ListMetrics"
+          "cloudwatch:ListMetrics",
+          "ce:GetCostAndUsage",
+          "logs:FilterLogEvents",
+          "logs:GetLogEvents",
+          "logs:DescribeLogStreams"
         ]
         # These are read-only "describe/list/get" calls only — the
         # application cannot create, modify, or delete any resource.
